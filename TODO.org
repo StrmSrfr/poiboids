@@ -1,0 +1,22 @@
+* TODO
+** Show some HTML/CSS/JS (1)
+** JS Best Practices (1)
+** new HTML elements (2)
+** AJAX & jQuery (1)
+** New CSS features (1)
+** Adaptive UI (1)
+** CSS transitions (2)
+** HTML 5 video (1)
+
+* Backlog
+** Geolocation (1)
+** Application Cache (2)
+** Websockets (2)
+** poi's exist; boids interact (5)
+** user edit and add poi (3)
+*** poi editor form validation
+** store poi position in ls (2)
+** drag and drop (save and load poi?) (2)
+** dev tools (1)
+** canvas force gradient display (2)
+** web worker to parse file (3)
