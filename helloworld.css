@@ -1,9 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
-body {
+html {
     font-size: 22px;
+    background: linear-gradient(white, IndianRed);
+    color: black;
+    min-height: 100%;
 }
 h1 {
     color: Maroon;
     font-family: Lobster, script;
     text-shadow: 5px 5px 2px HotPink;
+}
+ul {
+    column-count: 3;
+    -webkit-column-count: 3;
 }
