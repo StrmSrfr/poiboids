@@ -13,4 +13,5 @@ h1 {
 ul {
     column-count: 3;
     -webkit-column-count: 3;
+    list-style-position: inside;
 }
