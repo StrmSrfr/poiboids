@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>AJAX and jQuery</title>
+    <link rel="stylesheet" type="text/css" href="helloworld.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="helloworld.js"></script>
+    <script type="text/javascript" src="hipsum.js"></script>
+  </head>
+  <body>
+    <h1><span class="hello">AJAX and jQuery</span></h1>
+    <ul>
+      <li>They exist.</li>
+      <li>Not really new.</li>
+    </ul>
+    <code><pre>
+function appendText() {
+    $.get('http://hipsum.co/?paras=1&type=hipster-latin', function(result) {
+        $.parseHtml(result).find('.hipsum p').appendTo('.hipsum');
+    })
+}
+
+$(function () {
+    var foo = 5;
+    var bar;
+    $('#go').click(function() {
+        setInterval(appendText, 500);
+    });
+});
+    </pre></code>
+    <button id="go">go</button>
+    <div class="hipsum">
+    </div>
+    <a href="newcss.html" class="next">Next</a>
+  </body>
+</html>

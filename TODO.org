@@ -2,7 +2,7 @@
 ** DONE Show some HTML/CSS/JS (1)
 ** DONE JS Best Practices (1)
 ** DONE new HTML elements (2)
-** AJAX & jQuery (1)
+** DONE AJAX & jQuery (1)
 ** New CSS features (1)
 ** Adaptive UI (1)
 ** CSS transitions (2)
@@ -20,3 +20,4 @@
 ** dev tools (1)
 ** canvas force gradient display (2)
 ** web worker to parse file (3)
+** make AJAX demo work
