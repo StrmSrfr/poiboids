@@ -1,5 +1,5 @@
 * TODO
-** Show some HTML/CSS/JS (1)
+** DONE Show some HTML/CSS/JS (1)
 ** JS Best Practices (1)
 ** new HTML elements (2)
 ** AJAX & jQuery (1)

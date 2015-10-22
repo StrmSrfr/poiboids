@@ -1,0 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+body {
+    font-size: 22px;
+}
+h1 {
+    color: Maroon;
+    font-family: Lobster, script;
+    text-shadow: 5px 5px 2px HotPink;
+}
