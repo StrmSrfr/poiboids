@@ -1,6 +1,6 @@
 * TODO
 ** DONE Show some HTML/CSS/JS (1)
-** JS Best Practices (1)
+** DONE JS Best Practices (1)
 ** new HTML elements (2)
 ** AJAX & jQuery (1)
 ** New CSS features (1)
