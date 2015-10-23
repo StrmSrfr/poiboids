@@ -5,7 +5,7 @@
 ** DONE AJAX & jQuery (1)
 ** DONE New CSS features (1)
 ** DONE Adaptive UI (1)
-** CSS transitions (2)
+** DONE CSS transitions (2)
 ** HTML 5 video (1)
 
 * Backlog

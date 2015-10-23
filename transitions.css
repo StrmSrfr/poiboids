@@ -1,0 +1,61 @@
+#transition {
+    outline-style: solid;
+    outline-color: black;
+    outline-width: 0px;
+    background-color: AntiqueWhite;
+    color: Maroon;
+    transition: outline-color 2s, outline-width 2s, background-color 2s, color 2s;
+}
+#transition:hover {
+    outline-color: green;
+    outline-width: 5px;
+    background-color: Maroon !important;
+    color: AntiqueWhite !important;
+}
+#transition > code > pre {
+    background-color: inherit;
+    color: inherit;
+}
+#transformation {
+    transform: rotate(-1deg);
+}
+@keyframes animation {
+    0% {
+        left: 0px;
+    }
+    10% {
+        left: 100px;
+    }
+    20% {
+        left: -10px;
+    }
+    30% {
+        left: -100px;
+    }
+    40% {
+        left: -200px;
+    }
+    50% {
+        left: -250px;
+    }
+    60% {
+        left: -200px;
+    }
+    80% {
+        left: -100px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+#animation {
+    position: relative;
+    animation-name: animation;
+    animation-delay: 0s;
+    animation-duration: 4s;
+    animation-iteration-count: 50;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    border-radius: 10px;
+}
