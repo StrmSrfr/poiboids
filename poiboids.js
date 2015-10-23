@@ -1,12 +1,12 @@
 function gravity(e1, e2) {
-    var G = 1,
+    var G = 0.0001,
         d = e1.position.subtract(e2.position),
         r = e1.position.distanceFrom(e2.position),
         t = d.toUnitVector();
 
     // TODO mass?
     if (r > 0) {
-        return t.multiply(1/r*r);
+        return t.multiply(G/r*r);
     } else {
         return $V([0, 0]);
     }
@@ -83,5 +83,5 @@ $(function() {
             el.step();
         });
     },
-                      1000);
+                      50);
 });
