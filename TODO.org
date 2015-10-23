@@ -4,7 +4,7 @@
 ** DONE new HTML elements (2)
 ** DONE AJAX & jQuery (1)
 ** DONE New CSS features (1)
-** Adaptive UI (1)
+** DONE Adaptive UI (1)
 ** CSS transitions (2)
 ** HTML 5 video (1)
 

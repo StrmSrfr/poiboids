@@ -10,9 +10,33 @@ h1 {
     font-family: Lobster, script;
     text-align: center;
     text-shadow: 5px 5px 2px HotPink;
+    white-space: nowrap;
 }
+
 ul {
-    column-count: 3;
-    -webkit-column-count: 3;
+    column-count: 1;
+    -webkit-column-count: 1;
     list-style-position: inside;
 }
+
+@media screen and (min-width: 600px) {
+    ul {
+    column-count: 2;
+    -webkit-column-count: 2;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    ul {
+    column-count: 3;
+    -webkit-column-count: 3;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    ul {
+    column-count: 5;
+    -webkit-column-count: 5;
+    }
+}
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Adaptive UI</title>
+    <link rel="stylesheet" type="text/css" href="helloworld.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="helloworld.js"></script>
+  </head>
+  <body>
+    <h1><span class="hello">Adaptive UI</span></h1>
+    <h2>&lt;wbr></h2>
+    <h2><code>@media</code></h2>
+      <ul><li><code>width</code></li>
+        <li><code>height</code></li>
+        <li><code>device-width</code></li>
+        <li><code>device-height</code></li>
+        <li><code>orientation</code></li>
+        <li><code>resolution</code></li>
+        <li><code>aspect-ratio</code></li>
+        </ul>
+<code><pre>
+ul {
+    column-count: 1;
+    -webkit-column-count: 1;
+    list-style-position: inside;
+}
+
+@media screen and (min-width: 600px) {
+    ul {
+    column-count: 2;
+    -webkit-column-count: 2;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    ul {
+    column-count: 3;
+    -webkit-column-count: 3;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    ul {
+    column-count: 5;
+    -webkit-column-count: 5;
+    }
+}
+</pre></code>
+    <h2>JavaScript</h2>
+<code><pre>
+$(function () {
+    grow();
+    $(window).resize($.debounce(100, grow));
+});
+</pre></code>
+    <a href="transitions.html" class="next">Next</a>
+  </body>
+</html>
