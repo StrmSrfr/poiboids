@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>poiboids</title>
+    <link rel="stylesheet" type="text/css" href="helloworld.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="helloworld.js"></script>
+    <script type="text/javascript" src="sylvester.js"></script>
+    <script type="text/javascript" src="poiboids.js"></script>
+  </head>
+  <body>
+    <h1><span class="hello">poiboids</span></h1>
+<div class="content">
+<h2>HTML</h2>
+<code><pre>
+&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en">
+  &lt;head>
+    &lt;meta charset="utf-8"/>
+    &lt;title>Hello world&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>&lt;span class="hello">Hello world!&lt;/span>&lt;/h1>
+  &lt;/body>
+&lt;/html>
+</pre></code>
+<h2>CSS</h2>
+<code><pre>
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+body {
+    font-size: 24px;
+}
+h1 {
+    color: Maroon;
+    font-family: Lobster, script;
+    text-shadow: 5px 5px 2px HotPink;
+}
+</pre></code>
+<h2>JS</h2>
+<code><pre>
+$(function () {
+    var hello = $('.hello'),
+        oldW = hello.width(),
+        parentW = hello.parent().width(),
+        newW = 0.99 * parentW,
+        size = parseInt(hello.css('font-size')),
+        newSize = size * newW / oldW;
+    hello.animate({ fontSize: newSize + 'px' }, 2000);
+});
+</pre></code>
+</div>
+  </body>
+</html>
