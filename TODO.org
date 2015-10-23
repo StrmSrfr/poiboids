@@ -1,4 +1,4 @@
-* TODO
+* DONE
 ** DONE Show some HTML/CSS/JS (1)
 ** DONE JS Best Practices (1)
 ** DONE new HTML elements (2)
@@ -6,10 +6,12 @@
 ** DONE New CSS features (1)
 ** DONE Adaptive UI (1)
 ** DONE CSS transitions (2)
-** HTML 5 video (1)
+** DONE HTML 5 video (1)
+
+* DONE
+** Geolocation (1)
 
 * Backlog
-** Geolocation (1)
 ** Application Cache (2)
 ** Websockets (2)
 ** poi's exist; boids interact (5)
