@@ -8,13 +8,13 @@
 ** DONE CSS transitions (2)
 ** DONE HTML 5 video (1)
 
-* DONE
-** Geolocation (1)
-
-* Backlog
+* TODO
+** DONE Geolocation (1)
 ** Application Cache (2)
 ** Websockets (2)
 ** poi's exist; boids interact (5)
+
+* Backlog
 ** user edit and add poi (3)
 *** poi editor form validation
 ** store poi position in ls (2)
