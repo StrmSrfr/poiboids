@@ -6,7 +6,7 @@ function gravity(e1, e2) {
 
     // TODO mass?
     if (r > 0) {
-        return t.multiply(G/r*r);
+        return t.multiply(G*e1.mass*e2.mass/r*r);
     } else {
         return $V([0, 0]);
     }
@@ -29,12 +29,7 @@ function unmethodify(method) {
     }
 }
 
-/**
- * Constructor for boids.  Takes a jQuery object for the DOM element to
- * turn into a boid.
- * Does not add them to the global BOIDS array.  You'll have to do that yourself.
- */
-function Boid(el) {
+function Mass(el, mass) {
     var pos;
     this.$ = $(el);
     pos = this.$.offset();
@@ -43,8 +38,7 @@ function Boid(el) {
     this.velocity = $V([0, 0]);
     this.acceleration = $V([0, 0]);
     // TODO front, angular velocity?
-    // TODO mass
-
+    this.mass = mass;
     this.step = function step() {
         var forces = [],
             i;
@@ -54,8 +48,8 @@ function Boid(el) {
             this.velocity.add(this.acceleration);
 
         forces = [];
-        for (i = 0; i < BOIDS.length; i++) {
-            forces.push(this.force(BOIDS[i]));
+        for (i = 0; i < MASSES.length; i++) {
+            forces.push(this.force(MASSES[i]));
         }
 
         for (i = 0; i < forces.length; i++) {
@@ -68,6 +62,16 @@ function Boid(el) {
         this.$.css('position', 'absolute');
     };
 
+    return this;
+}
+
+/**
+ * Constructor for boids.  Takes a jQuery object for the DOM element to
+ * turn into a boid.
+ * Does not add them to the global BOIDS array.  You'll have to do that yourself.
+ */
+function Boid(el) {
+    Mass.call(this, el, 1);
     this.force = function force(that) {
         return gravity(this, that);
     };
@@ -75,7 +79,16 @@ function Boid(el) {
     return this;
 }
 
+function Poi(el) {
+    Mass.call(this, el, 100);
+    this.force = function nilForce() {
+        return $V([0, 0]);
+    }
+}
+
 var BOIDS = [];
+var POIS = [];
+var MASSES = [];
 
 function spanifyText(parent) {
     http://stackoverflow.com/a/7824394
@@ -111,7 +124,14 @@ function stepBoids() {
 $(function() {
     spanifyText($('.content > *'));
     $('.boid').each(function () {
-        BOIDS.push(new Boid(this));
+        var boid = (new Boid(this));
+        MASSES.push(boid);
+        BOIDS.push(boid);
+    });
+    $('h2').each(function () {
+        var poi = (new Poi(this));
+        MASSES.push(poi);
+        POIS.push(poi);
     });
     window.setInterval(stepBoids,
                       50);
