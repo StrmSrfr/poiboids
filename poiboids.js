@@ -92,7 +92,13 @@ function spanifyText(parent) {
                           text.charAt(i) +
                           '</span>');
         }
+        parent.append($('<span class="spacer"></span>').text(text)
+                      .css('color', parent.css('background-color'))
+                     );
     });
+/*
+    text.parent().css('color', text.parent().css('background-color'));
+*/
     text.detach();
 }
 
