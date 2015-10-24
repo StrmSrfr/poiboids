@@ -141,7 +141,7 @@ $(function() {
         MASSES.push(boid);
         BOIDS.push(boid);
     });
-    $('h2').each(function () {
+    $('.poi').each(function () {
         var poi = (new Poi(this));
         MASSES.push(poi);
         POIS.push(poi);
