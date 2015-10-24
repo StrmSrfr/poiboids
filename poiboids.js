@@ -93,7 +93,7 @@ function Boid(el) {
 }
 
 function Poi(el) {
-    Mass.call(this, el, 100);
+    Mass.call(this, el, 200);
     this.force = function nilForce() {
         return $V([0, 0]);
     }
