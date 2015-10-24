@@ -44,8 +44,8 @@ function Mass(el, mass) {
             i;
         this.position =
             this.position.add(this.velocity);
-        this.velocity =
-            this.velocity.add(this.acceleration);
+
+        this.accelerate();
 
         forces = [];
         for (i = 0; i < MASSES.length; i++) {
@@ -61,6 +61,19 @@ function Mass(el, mass) {
         this.$.css('top', this.position.e(2));
         this.$.css('position', 'absolute');
     };
+
+    this.accelerate = function accelerate() {
+        var terminal = 3, // decided by a fair die roll
+            nv = this.velocity.add(this.acceleration);
+
+        terminal *= 3; // units are negotiable
+
+        if (nv.modulus() > terminal) {
+            this.velocity = nv.toUnitVector().multiply(terminal);
+        } else {
+            this.velocity = nv;
+        }
+    }
 
     return this;
 }
