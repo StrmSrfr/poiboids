@@ -37,7 +37,7 @@ function unmethodify(method) {
 function Boid(el) {
     var pos;
     this.$ = $(el);
-    pos = this.$.position();
+    pos = this.$.offset();
 
     this.position = $V([pos.left, pos.top]);
     this.velocity = $V([0, 0]);
@@ -65,6 +65,7 @@ function Boid(el) {
 
         this.$.css('left', this.position.e(1));
         this.$.css('top', this.position.e(2));
+        this.$.css('position', 'absolute');
     };
 
     this.force = function force(that) {
@@ -76,12 +77,36 @@ function Boid(el) {
 
 var BOIDS = [];
 
-$(function() {
-    $('.content > *').css('position', 'relative').each(function () { BOIDS.push(new Boid(this)); });
-    window.setInterval(function () {
-        BOIDS.forEach(function (el) {
-            el.step();
+function spanifyText(parent) {
+    http://stackoverflow.com/a/7824394
+    var text =
+        $(parent).find('*').contents().filter(function () {
+            return this.nodeType === 3;
         });
-    },
+    text.each(function (idx, el) {
+        var text = $(el).text(),
+            parent = $(el).parent(),
+            i;
+        for (i = 0; i < text.length; i++) {
+            parent.append('<span class="boid">' +
+                          text.charAt(i) +
+                          '</span>');
+        }
+    });
+    text.detach();
+}
+
+function stepBoids() {
+    BOIDS.forEach(function (el) {
+        el.step();
+    });
+}
+
+$(function() {
+    spanifyText($('.content > *'));
+    $('.boid').each(function () {
+        BOIDS.push(new Boid(this));
+    });
+    window.setInterval(stepBoids,
                       50);
 });
