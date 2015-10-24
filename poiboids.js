@@ -1,6 +1,6 @@
 function gravity(e1, e2) {
     var G = 0.0001,
-        d = e1.position.subtract(e2.position),
+        d = e2.position.subtract(e1.position),
         r = e1.position.distanceFrom(e2.position),
         t = d.toUnitVector();
 
