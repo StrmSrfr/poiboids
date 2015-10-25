@@ -25,7 +25,7 @@ li {
 }
 
 @media screen and (min-width: 600px) {
-    ul {
+    ul.columns {
     column-count: 2;
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -33,7 +33,7 @@ li {
 }
 
 @media screen and (min-width: 800px) {
-    ul {
+    ul.columns {
     column-count: 3;
     -webkit-column-count: 3;
     -moz-column-count: 3;
@@ -41,7 +41,7 @@ li {
 }
 
 @media screen and (min-width: 1000px) {
-    ul {
+    ul.columns {
     column-count: 5;
     -webkit-column-count: 5;
     -moz-column-count: 5;
