@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <a href="webworkers.html" class="next">Next</a>
+    <title>Web Sockets</title>
+    <link rel="stylesheet" type="text/css" href="helloworld.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="helloworld.js"></script>
+  </head>
+  <body>
+    <h1><span class="hello">Web Sockets</span></h1>
+    <ul><li>Bettor than AJAX</li>
+    <li>Real time communication with server</li>
+    <li>Allows server to push information to a client</li>
+    <li>
+    </ul>
+<code><pre>    
+var connection = new WebSocket('ws://websocket.example.org/echo', ['soap', 'xmpp']);
+
+// When the connection is open, send some data to the server
+connection.onopen = function () {
+  connection.send('Ping'); // Send the message 'Ping' to the server
+};
+
+// Log errors
+connection.onerror = function (error) {
+  console.log('WebSocket Error ' + error);
+};
+
+// Log messages from the server
+connection.onmessage = function (e) {
+  console.log('Server: ' + e.data);
+};</pre></code>
+  </body>
+</html>

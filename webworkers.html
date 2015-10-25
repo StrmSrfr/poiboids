@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <a href="webworkers.html" class="next">Next</a>
+    <title>Web Workers</title>
+    <link rel="stylesheet" type="text/css" href="helloworld.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="helloworld.js"></script>
+  </head>
+  <body>
+    <h1><span class="hello">Web Workers</span></h1>
+    <div><ul><li>Javascript is single threaded</li>
+    <li>Web workers are basically multithreading</li>
+    <li>Messages are copied, not shared between caller and worker</li>
+    </ul></div>
+<div>
+<h2>Main javascript function</h2>
+<code><pre>    
+    var myWorker = new Worker("worker.js");
+    
+    myWorker.postMessage("firstParam","secondParam");
+    
+    myWorker.onmessage = function(e) {
+        var result = e.data;
+        alert(result);
+        console.log('Message received from worker');
+        
+        myWorker.terminate();
+        //can also be called from within the worker by calling close()
+    }
+
+</pre></code></div>
+
+<div>
+<h2>worker.js</h2>
+<code><pre>
+    self.addEventListener('message', function(e) {
+        postMessage("Message received boss!");
+        }, false);
+</pre></code></div>
+  </body>
+</html>
