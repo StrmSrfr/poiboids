@@ -20,6 +20,10 @@ ul {
     list-style-position: inside;
 }
 
+li {
+    white-space: nowrap;
+}
+
 @media screen and (min-width: 600px) {
     ul {
     column-count: 2;
