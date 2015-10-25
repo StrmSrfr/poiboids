@@ -4,7 +4,6 @@ function gravity(e1, e2) {
         r = e1.position.distanceFrom(e2.position),
         t = d.toUnitVector();
 
-    // TODO mass?
     if (r > 0) {
         return t.multiply(G*e1.mass*e2.mass/r*r);
     } else {
@@ -93,7 +92,10 @@ function Boid(el) {
 }
 
 function Poi(el) {
-    Mass.call(this, el, 200);
+    var r = $(el).attr('r'),
+        mass = r*r*Math.PI/39;
+
+    Mass.call(this, el, mass);
     this.force = function nilForce() {
         return $V([0, 0]);
     }
