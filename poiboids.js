@@ -328,5 +328,6 @@ function start() {
 }
 
 $(function() {
-    $('#svg').click(start);
+    var started = 0;
+    $('#svg').click(function () { if (!started) { start(); started = 1; } });
 });
