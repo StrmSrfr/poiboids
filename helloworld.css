@@ -49,12 +49,12 @@ input[type=button] {
     background-color: WhiteSmoke;
 }
 
-.saveButton {
-    background-color: PaleGreen;
+input[type=button].newButton {
+    background-color: #e0FFe0;
 }
 
-.deleteButton {
-    background-color: Salmon;
+input[type=button].deleteButton {
+    background-color: #FFE0e0;
 }
 
 @media screen and (min-width: 600px) {
