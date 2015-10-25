@@ -196,6 +196,7 @@ function Inspector(el) {
         if (MASSES.indexOf(poi) < 0) {
             MASSES.push(poi);
         }
+        savePoi();
     });
 
     this.$.find('.deleteButton').click(function del() {
@@ -203,6 +204,7 @@ function Inspector(el) {
         if (poi) {
             poi.remove();
             that.deinspect(poi);
+            savePoi();
         }
     });
 
@@ -272,7 +274,7 @@ function newCircle(attributes) {
 var INSPECTOR;
 
 function loadPoi() {
-    var poi = localStorage.getItem('poi');
+    var poi = JSON.parse(localStorage.getItem('poi'));
     poi.forEach(function (p) {
         var circle = newCircle(p),
             poi = new Poi(circle);
@@ -280,6 +282,23 @@ function loadPoi() {
         POI.push(poi);
         MASSES.push(poi);
     });
+}
+
+function savePoi() {
+    var poi = [];
+    $('.poi').each(function () {
+        var result = {},
+            attrs = this.attributes,
+            i,
+            attr;
+        for (i = 0; i < attrs.length; i++) {
+            attr = attrs[i];
+            result[attr.name] = attr.value;
+        }
+        poi.push(result);
+    });
+
+    localStorage.setItem('poi', JSON.stringify(poi));
 }
 
 function start() {
