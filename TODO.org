@@ -15,8 +15,8 @@
 ** DONE poi's exist; boids interact (5)
 
 * Backlog
-** user edit and add poi (3)
-*** poi editor form validation
+** TODO user edit and add poi (3)
+*** TODO poi editor form validation
 ** store poi position in ls (2)
 ** drag and drop (save and load poi?) (2)
 ** dev tools (1)

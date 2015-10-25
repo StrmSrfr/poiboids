@@ -190,6 +190,12 @@ function Inspector(el) {
         poi.setY(y);
         poi.setR(r);
         poi.setColor(c);
+        if (POI.indexOf(poi) < 0) {
+            POI.push(poi);
+        }
+        if (MASSES.indexOf(poi) < 0) {
+            MASSES.push(poi);
+        }
     });
 
     this.$.find('.deleteButton').click(function del() {
@@ -198,6 +204,33 @@ function Inspector(el) {
             poi.remove();
             that.deinspect(poi);
         }
+    });
+
+    this.$.find('.newButton').click(function add() {
+        var poi = that.inspecting,
+            svg, circle, dom;
+
+        if (poi) {
+            that.deinspect(poi);
+        }
+
+        svg = document.createElementNS('http://www.w3.org/2000/svg',
+                                       'svg'),
+        circle = document.createElementNS('http://www.w3.org/2000/svg',
+                                          'circle');
+        dom = $(circle);
+        dom.attr({
+            class: "poi",
+            cx: "300",
+            cy: "300",
+            r: "50",
+            stroke: "black",
+            "stroke-width": "2",
+            fill: "#0000ff"
+        });
+        dom.appendTo('svg');
+        poi = new Poi(dom);
+        that.inspect(poi);
     });
 
     this.inspect = function inspect(poi) {
