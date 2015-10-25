@@ -10,9 +10,9 @@
 
 * TODO
 ** DONE Geolocation (1)
-** Application Cache (2)
+** DONE Application Cache (2)
 ** Websockets (2)
-** poi's exist; boids interact (5)
+** DONE poi's exist; boids interact (5)
 
 * Backlog
 ** user edit and add poi (3)

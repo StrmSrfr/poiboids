@@ -4,7 +4,6 @@ function gravity(e1, e2) {
         r = e1.position.distanceFrom(e2.position),
         t = d.toUnitVector();
 
-    // TODO mass?
     if (r > 0) {
         return t.multiply(G*e1.mass*e2.mass/r*r);
     } else {
@@ -37,7 +36,7 @@ function Mass(el, mass) {
     this.position = $V([pos.left, pos.top]);
     this.velocity = $V([0, 0]);
     this.acceleration = $V([0, 0]);
-    // TODO front, angular velocity?
+    // TODO angular velocity?
     this.mass = mass;
     this.step = function step() {
         var forces = [],
@@ -93,14 +92,17 @@ function Boid(el) {
 }
 
 function Poi(el) {
-    Mass.call(this, el, 200);
+    var r = $(el).attr('r'),
+        mass = r*r*Math.PI/39;
+
+    Mass.call(this, el, mass);
     this.force = function nilForce() {
         return $V([0, 0]);
     }
 }
 
 var BOIDS = [];
-var POIS = [];
+var POI = [];
 var MASSES = [];
 
 function spanifyText(parent) {
@@ -122,9 +124,6 @@ function spanifyText(parent) {
                       .css('color', parent.css('background-color'))
                      );
     });
-/*
-    text.parent().css('color', text.parent().css('background-color'));
-*/
     text.detach();
 }
 
@@ -144,7 +143,7 @@ $(function() {
     $('.poi').each(function () {
         var poi = (new Poi(this));
         MASSES.push(poi);
-        POIS.push(poi);
+        POI.push(poi);
     });
     window.setInterval(stepBoids,
                       50);

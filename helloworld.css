@@ -45,6 +45,17 @@ ul {
     width:100px;
 }
 
+input[type=button] {
+    background-color: WhiteSmoke;
+}
+
+.saveButton {
+    background-color: PaleGreen;
+}
+
+.deleteButton {
+    background-color: Salmon;
+}
 
 @media screen and (min-width: 600px) {
     ul {
