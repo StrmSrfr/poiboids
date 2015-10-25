@@ -102,7 +102,7 @@ function Poi(el) {
 }
 
 var BOIDS = [];
-var POIS = [];
+var POI = [];
 var MASSES = [];
 
 function spanifyText(parent) {
@@ -146,7 +146,7 @@ $(function() {
     $('.poi').each(function () {
         var poi = (new Poi(this));
         MASSES.push(poi);
-        POIS.push(poi);
+        POI.push(poi);
     });
     window.setInterval(stepBoids,
                       50);
