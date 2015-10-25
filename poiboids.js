@@ -92,12 +92,44 @@ function Boid(el) {
 }
 
 function Poi(el) {
-    var r = $(el).attr('r'),
-        mass = r*r*Math.PI/39;
+    var density = 1/39,
+        r = $(el).attr('r'),
+        that = this;
 
-    Mass.call(this, el, mass);
+    this.$ = $(this);
+
+    this.setR = function setR(r) {
+        that.r = r;
+        that.mass = r*r*Math.PI*density;
+        that.$.attr('r', r);
+    }
+
+    this.setR(r);
+
+    Mass.call(this, el, this.mass);
+
+    this.inspect = function inspect() {
+        INSPECTOR.inspect(that);
+    }
+
+    this.$.click(this.inspect);
+
     this.force = function nilForce() {
         return $V([0, 0]);
+    }
+
+    this.setX = function setX(x) {
+        that.position = $V([x, that.position.e(2)]);
+        that.$.attr('cx', +x + +that.r);
+    }
+
+    this.setY = function setY(y) {
+        that.position = $V([that.position.e(1), y]);
+        that.$.attr('cy', +y + +that.r);
+    }
+
+    this.setColor = function setColor(c) {
+        that.$.attr('fill', c);
     }
 }
 
@@ -133,6 +165,61 @@ function stepBoids() {
     });
 }
 
+function Inspector(el) {
+    var that = this;
+
+    this.$ = $(el);
+    this.$x = this.$.find('#PoiX');
+    this.$y = this.$.find('#PoiY');
+    this.$r = this.$.find('#PoiSize');
+    this.$c = this.$.find('#PoiColor');
+
+    this.$.find('.saveButton').click(function save() {
+        var poi = that.inspecting,
+            x = that.$x.val(),
+            y = that.$y.val(),
+            r = that.$r.val(),
+            c = that.$c.val();
+        poi.setX(x);
+        poi.setY(y);
+        poi.setR(r);
+        poi.setColor(c);
+    });
+
+    this.inspect = function inspect(poi) {
+        var old = this.inspecting;
+        if (old) {
+            this.deinspect(old);
+            if (old === poi) {
+                /* already selected, just deselect */
+                return;
+            }
+        }
+
+        this.$x.val(poi.position.e(1));
+        this.$y.val(poi.position.e(2));
+        this.$r.val(poi.r);
+        this.$c.val(poi.$.attr('fill'));
+
+        poi.$.css('outline-color', 'rgba(240,248,255,128)'); // 50% AliceBlue
+        poi.$.css('outline-width', 'thick');
+        poi.$.css('outline-style', 'solid');
+
+        this.inspecting = poi;
+    }
+
+    this.deinspect = function deinspect(poi) {
+        poi.$.css('outline-style', 'none');
+        this.$x.val('');
+        this.$y.val('');
+        this.$r.val('');
+        this.$c.val('');
+        this.inspecting = undefined;
+    }
+}
+
+var INSPECTOR;
+
 $(function() {
     spanifyText($('.content > *'));
     $('.boid').each(function () {
@@ -144,6 +231,9 @@ $(function() {
         var poi = (new Poi(this));
         MASSES.push(poi);
         POI.push(poi);
+    });
+    $('.inspector').each(function () {
+        INSPECTOR = new Inspector(this);
     });
     window.setInterval(stepBoids,
                       50);
