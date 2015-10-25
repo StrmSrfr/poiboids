@@ -36,7 +36,7 @@ function Mass(el, mass) {
     this.position = $V([pos.left, pos.top]);
     this.velocity = $V([0, 0]);
     this.acceleration = $V([0, 0]);
-    // TODO front, angular velocity?
+    // TODO angular velocity?
     this.mass = mass;
     this.step = function step() {
         var forces = [],
@@ -124,9 +124,6 @@ function spanifyText(parent) {
                       .css('color', parent.css('background-color'))
                      );
     });
-/*
-    text.parent().css('color', text.parent().css('background-color'));
-*/
     text.detach();
 }
 
