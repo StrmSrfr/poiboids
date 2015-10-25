@@ -208,27 +208,20 @@ function Inspector(el) {
 
     this.$.find('.newButton').click(function add() {
         var poi = that.inspecting,
-            svg, circle, dom;
+            dom = newCircle({
+                class: "poi",
+                cx: "300",
+                cy: "300",
+                r: "50",
+                stroke: "black",
+                "stroke-width": "2",
+                fill: "#0000ff"
+            });
 
         if (poi) {
             that.deinspect(poi);
         }
 
-        svg = document.createElementNS('http://www.w3.org/2000/svg',
-                                       'svg'),
-        circle = document.createElementNS('http://www.w3.org/2000/svg',
-                                          'circle');
-        dom = $(circle);
-        dom.attr({
-            class: "poi",
-            cx: "300",
-            cy: "300",
-            r: "50",
-            stroke: "black",
-            "stroke-width": "2",
-            fill: "#0000ff"
-        });
-        dom.appendTo('svg');
         poi = new Poi(dom);
         that.inspect(poi);
     });
@@ -265,9 +258,38 @@ function Inspector(el) {
     }
 }
 
+function newCircle(attributes) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg',
+                                       'svg'),
+        circle = document.createElementNS('http://www.w3.org/2000/svg',
+                                          'circle'),
+        dom = $(circle);
+    dom.attr(attributes);
+    dom.appendTo('#svg');
+    return dom;
+}
+
 var INSPECTOR;
 
+function loadPoi() {
+    var poi = localStorage.getItem('poi');
+    poi.forEach(function (p) {
+        var circle = newCircle(p),
+            poi = new Poi(circle);
+
+        POI.push(poi);
+        MASSES.push(poi);
+    });
+}
+
 function start() {
+    if (localStorage.getItem('poi')) {
+        $('.poi').each(function () {
+            $(this).remove();
+        });
+        loadPoi();
+    }
+
     spanifyText($('.content > *'));
     $('.boid').each(function () {
         var boid = (new Boid(this));
