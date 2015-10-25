@@ -267,7 +267,7 @@ function Inspector(el) {
 
 var INSPECTOR;
 
-$(function() {
+function start() {
     spanifyText($('.content > *'));
     $('.boid').each(function () {
         var boid = (new Boid(this));
@@ -284,4 +284,8 @@ $(function() {
     });
     window.setInterval(stepBoids,
                       50);
+}
+
+$(function() {
+    start();
 });
