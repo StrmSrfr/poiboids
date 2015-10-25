@@ -11,7 +11,7 @@
 * TODO
 ** DONE Geolocation (1)
 ** DONE Application Cache (2)
-** Websockets (2)
+** DONE Websockets (2)
 ** DONE poi's exist; boids interact (5)
 
 * Backlog
