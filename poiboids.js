@@ -131,6 +131,12 @@ function Poi(el) {
     this.setColor = function setColor(c) {
         that.$.attr('fill', c);
     }
+
+    this.remove = function remove() {
+        that.$.remove();
+        POI.splice(POI.indexOf(that), 1);
+        MASSES.splice(MASSES.indexOf(that), 1);
+    }
 }
 
 var BOIDS = [];
@@ -186,10 +192,18 @@ function Inspector(el) {
         poi.setColor(c);
     });
 
+    this.$.find('.deleteButton').click(function del() {
+        var poi = that.inspecting;
+        if (poi) {
+            poi.remove();
+            that.deinspect(poi);
+        }
+    });
+
     this.inspect = function inspect(poi) {
-        var old = this.inspecting;
+        var old = that.inspecting;
         if (old) {
-            this.deinspect(old);
+            that.deinspect(old);
             if (old === poi) {
                 /* already selected, just deselect */
                 return;
