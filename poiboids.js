@@ -328,5 +328,5 @@ function start() {
 }
 
 $(function() {
-    start();
+    $('#svg').click(start);
 });
