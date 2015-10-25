@@ -16,6 +16,7 @@ h1 {
 ul {
     column-count: 1;
     -webkit-column-count: 1;
+    -moz-column-count: 1;
     list-style-position: inside;
 }
 
@@ -23,6 +24,7 @@ ul {
     ul {
     column-count: 2;
     -webkit-column-count: 2;
+    -moz-column-count: 2;
     }
 }
 
@@ -30,6 +32,7 @@ ul {
     ul {
     column-count: 3;
     -webkit-column-count: 3;
+    -moz-column-count: 3;
     }
 }
 
@@ -37,6 +40,7 @@ ul {
     ul {
     column-count: 5;
     -webkit-column-count: 5;
+    -moz-column-count: 5;
     }
 }
 
