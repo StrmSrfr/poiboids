@@ -66,7 +66,9 @@ function Mass(el, mass) {
             this.acceleration.elements[0] += force.elements[0];
             this.acceleration.elements[1] += force.elements[1];
         }
+    };
 
+    this.post = function post() {
         this.$.css('left', this.position.e(1));
         this.$.css('top', this.position.e(2));
         this.$.css('position', 'absolute');
@@ -179,12 +181,18 @@ function spanifyText(parent) {
 var acc = 10;
 function stepBoids() {
     var ogt = new Date().getTime(),
+        i,
         mspf,
         fps;
 
+    for (i = 0; i < BOIDS.length; i++) {
+        BOIDS[i].step();
+    }
+
     BOIDS.forEach(function (el) {
-        el.step();
+        el.post();
     });
+
     mspf = (new Date().getTime() - ogt);
     fps = 1000/mspf;
     acc = 0.5*fps + 0.5*acc;
