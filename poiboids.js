@@ -53,8 +53,9 @@ function Mass(el, mass) {
     this.mass = mass;
     this.step = function step() {
         var i, force;
-        this.position =
-            this.position.add(this.velocity);
+        // position += velocity
+        this.position.elements[0] += this.velocity.elements[0];
+        this.position.elements[1] += this.velocity.elements[1];
 
         this.accelerate();
 
