@@ -37,6 +37,10 @@ input[type=button].deleteButton {
     background-color: #FFE0e0;
 }
 
+.boid {
+    z-index: 76;
+}
+
 #svg {
     z-index: 75;
     position: absolute;
