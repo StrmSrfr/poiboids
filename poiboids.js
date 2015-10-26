@@ -327,8 +327,10 @@ function start() {
     });
     window.setInterval(stepBoids,
                       interval);
+/* too slow
     window.setInterval(stepCanvas,
                       interval);
+*/
 }
 
 var CANVAS;
@@ -354,7 +356,7 @@ function stepCanvas() {
             });
 
             offset = 4*(y*width+x);
-            pix[offset+1] = 17*Math.log(g);
+            pix[offset+1] = 19*Math.log(g);
             pix[offset+3] = 255;
         }
 
