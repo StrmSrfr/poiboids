@@ -1,11 +1,22 @@
 var G = 0.0001;
 function gravity(e1, e2) {
-    var d = e2.position.subtract(e1.position),
-        r = e1.position.distanceFrom(e2.position),
-        t = d.toUnitVector();
+/* this was open coded:
+     var d = e2.position.subtract(e1.position),
+         r = e1.position.distanceFrom(e2.position),
+         t = d.toUnitVector();
+     ...
+         return t.multiply(G*e1.mass*e2.mass/r*r);
+*/
+    var p1 = e1.position.elements,
+        p2 = e2.position.elements,
+        d = [p2[0]-p1[0], p2[1]-p1[1]],
+        rSquared = Math.abs(d[0]*d[0] + d[1]*d[1]),
+        r = Math.sqrt(rSquared),
+        f = G*e1.mass*e2.mass*rSquared,
+        t = $V([d[0]/r, d[1]/r]);
 
     if (r > 0) {
-        return t.multiply(G*e1.mass*e2.mass/r*r);
+        return t;
     } else {
         return $V([0, 0]);
     }
