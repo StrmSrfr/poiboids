@@ -1,6 +1,6 @@
+var G = 0.0001;
 function gravity(e1, e2) {
-    var G = 0.0001,
-        d = e2.position.subtract(e1.position),
+    var d = e2.position.subtract(e1.position),
         r = e1.position.distanceFrom(e2.position),
         t = d.toUnitVector();
 
@@ -302,6 +302,8 @@ function savePoi() {
 }
 
 function start() {
+    var interval = 20;
+
     if (localStorage.getItem('poi')) {
         $('.poi').each(function () {
             $(this).remove();
@@ -324,10 +326,47 @@ function start() {
         INSPECTOR = new Inspector(this);
     });
     window.setInterval(stepBoids,
-                      50);
+                      interval);
+    window.setInterval(stepCanvas,
+                      interval);
+}
+
+var CANVAS;
+
+function stepCanvas() {
+    var width = CANVAS.canvas.width,
+        height = CANVAS.canvas.height,
+        imageData =
+        CANVAS.createImageData(width,
+                               height),
+        pix = imageData.data,
+        y, x, pos, f, g, offset;
+    console.log('stepCanvas');
+    for (y = 0; y < window.innerHeight; y += 2)
+        for (x = 0; x < window.innerWidth; x += 2) {
+            pos = $V([x, y]);
+            g = 0;
+
+            // TODO: color
+            MASSES.forEach(function (m) {
+                f = gravity(m, { position: pos, mass: 1 });
+                g += f.modulus()/G;
+            });
+
+            offset = 4*(y*width+x);
+            pix[offset+1] = 17*Math.log(g);
+            pix[offset+3] = 255;
+        }
+
+    CANVAS.putImageData(imageData, 0, 0);
 }
 
 $(function() {
     var started = 0;
     $('#svg').click(function () { if (!started) { start(); started = 1; } });
+
+    var canvas = document.getElementById("canvas");
+    canvas.height = $('html').height();
+    canvas.width = $('html').width();
+    CANVAS = canvas.getContext("2d");
 });
