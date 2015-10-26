@@ -65,8 +65,9 @@ function Mass(el, mass) {
         }
 
         for (i = 0; i < forces.length; i++) {
-            this.acceleration =
-                this.acceleration.add(forces[i]);
+            // acceleration += forces
+            this.acceleration.elements[0] += forces[i].elements[0];
+            this.acceleration.elements[1] += forces[i].elements[1];
         }
 
         this.$.css('left', this.position.e(1));
