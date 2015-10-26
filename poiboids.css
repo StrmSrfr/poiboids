@@ -50,3 +50,14 @@ input[type=button].deleteButton {
     left: 0;
     top: 0;
 }
+
+#fps {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    color: Silver;
+    font-family: Monoco, Menlo, Monofur, mono;
+    font-size: 9pt;
+    text-align: right;
+    width: 5em;
+}

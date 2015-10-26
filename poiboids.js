@@ -165,10 +165,19 @@ function spanifyText(parent) {
     text.detach();
 }
 
+var acc = 10;
 function stepBoids() {
+    var ogt = new Date().getTime(),
+        mspf,
+        fps;
+
     BOIDS.forEach(function (el) {
         el.step();
     });
+    mspf = (new Date().getTime() - ogt);
+    fps = 1000/mspf;
+    acc = 0.5*fps + 0.5*acc;
+    $('#fps').text(acc.toLocaleString('en', { maximumFractionDigits: 2, minimumFractionDigits: 2 }));
 }
 
 function Inspector(el) {
