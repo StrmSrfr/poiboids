@@ -52,22 +52,18 @@ function Mass(el, mass) {
     // TODO angular velocity?
     this.mass = mass;
     this.step = function step() {
-        var forces = [],
-            i;
+        var i, force;
         this.position =
             this.position.add(this.velocity);
 
         this.accelerate();
 
-        forces = [];
         for (i = 0; i < MASSES.length; i++) {
-            forces.push(this.force(MASSES[i]));
-        }
+            force = this.force(MASSES[i]);
 
-        for (i = 0; i < forces.length; i++) {
-            // acceleration += forces
-            this.acceleration.elements[0] += forces[i].elements[0];
-            this.acceleration.elements[1] += forces[i].elements[1];
+            // acceleration += force
+            this.acceleration.elements[0] += force.elements[0];
+            this.acceleration.elements[1] += force.elements[1];
         }
 
         this.$.css('left', this.position.e(1));
