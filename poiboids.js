@@ -12,9 +12,9 @@ function gravity(e1, e2) {
         p2 = e2.position.elements,
         d = [p2[0]-p1[0], p2[1]-p1[1]],
         rSquared = d[0]*d[0] + d[1]*d[1],
-        r = Math.sqrt(rSquared),
-        t = [d[0]/r, d[1]/r],
-        f = G*e1.mass*e2.mass/r*r,
+        ir = 1/Math.sqrt(rSquared),
+        t = [d[0]*ir, d[1]*ir],
+        f = G*e1.mass*e2.mass,
         result = $V([f*t[0], f*t[1]]);
 
     if (rSquared > 0) {
